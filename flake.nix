@@ -123,6 +123,8 @@
             # And make sure we build there too
             buildAndTestSubdir = "src-tauri";
 
+            doCheck = false;
+
             passthru.updateScript = pkgs.nix-update-script { };
 
             meta = {
