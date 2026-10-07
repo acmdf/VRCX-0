@@ -60,7 +60,7 @@
             npmDeps = pkgs.fetchNpmDeps {
               name = "${finalAttrs.pname}-${finalAttrs.version}-npm-deps";
               inherit (finalAttrs) src;
-              hash = "sha256-h9YihimQoWMBqgZOIdUtXJNQvb+06MRbLf4cHpiVxwY=";
+              hash = "sha256-kJXPtmnZhYqKi1N+iptGikrsN48R/W1/alZ61yoteG8=";
             };
 
             nativeBuildInputs =
@@ -93,24 +93,25 @@
 
             postPatch = ''
               node <<'NODE'
-                                const fs = require('node:fs');
+                const fs = require('node:fs');
 
-                                const tauriConfigPath = 'src-tauri/tauri.conf.json';
-                                const linuxConfigPath = 'src-tauri/tauri.linux.conf.json';
+                const tauriConfigPath = 'src-tauri/tauri.conf.json';
+                const linuxConfigPath = 'src-tauri/tauri.linux.conf.json';
 
-                                const tauriConfig = JSON.parse(fs.readFileSync(tauriConfigPath, 'utf8'));
-                                let config = structuredClone(tauriConfig);
+                const tauriConfig = JSON.parse(fs.readFileSync(tauriConfigPath, 'utf8'));
+                let config = structuredClone(tauriConfig);
 
-                                const linuxConfig = JSON.parse(fs.readFileSync(linuxConfigPath, 'utf8'));
-                                config = {
-                                    bundle: {
-                                        ...(linuxConfig.bundle ?? {}),
-                                        targets: ['appimage'],
-                                        createUpdaterArtifacts: false
-                                    }
-                                };
+                const linuxConfig = JSON.parse(fs.readFileSync(linuxConfigPath, 'utf8'));
+                config = {
+                    bundle: {
+                        ...(linuxConfig.bundle ?? {}),
+                        targets: ['appimage'],
+                        createUpdaterArtifacts: false
+                    }
+                };
 
-                                fs.writeFileSync(linuxConfigPath, JSON.stringify(config, null, 4));'';
+                fs.writeFileSync(linuxConfigPath, JSON.stringify(config, null, 4));
+            '';
 
             preFixup = ''
               gappsWrapperArgs+=(
