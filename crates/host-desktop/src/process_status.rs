@@ -272,7 +272,7 @@ fn is_steamvr_process_name(name: &str) -> bool {
     matches!(
         normalized.as_str(),
         "vrmonitor" | "vrserver" | "vrserver.exe" | "vrcompositor" | "monado-service"
-    ) || normalized.ends_with("wivrn-server")
+    ) || normalized.contains("wivrn-server")
 }
 
 #[cfg(not(target_os = "linux"))]
