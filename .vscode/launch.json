@@ -1,0 +1,663 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug unit tests in library 'vrcx_0'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0"]
+            }
+        },
+        {
+            "name": "Debug executable 'export-bindings'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["run", "--bin=export-bindings", "--package=vrcx-0"]
+            },
+            "args": []
+        },
+        {
+            "name": "Debug unit tests in executable 'export-bindings'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--bin=export-bindings", "--package=vrcx-0"]
+            }
+        },
+        {
+            "name": "Debug executable 'vrcx-0'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["run", "--bin=vrcx-0", "--package=vrcx-0"]
+            },
+            "args": []
+        },
+        {
+            "name": "Debug unit tests in executable 'vrcx-0'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--bin=vrcx-0", "--package=vrcx-0"]
+            }
+        },
+        {
+            "name": "Debug integration test 'backend_architecture'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=backend_architecture",
+                    "--package=vrcx-0"
+                ]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_application'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-application"]
+            }
+        },
+        {
+            "name": "Debug integration test 'favorite_transfer_plan'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=favorite_transfer_plan",
+                    "--package=vrcx-0-application"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'telemetry_contract'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=telemetry_contract",
+                    "--package=vrcx-0-application"
+                ]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_application_core'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-application-core"]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_contracts'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-contracts"]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_core'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-core"]
+            }
+        },
+        {
+            "name": "Debug integration test 'activity_buckets'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=activity_buckets",
+                    "--package=vrcx-0-core"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'activity_heatmap'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=activity_heatmap",
+                    "--package=vrcx-0-core"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'activity_sessions'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=activity_sessions",
+                    "--package=vrcx-0-core"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'game_log_sessions'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=game_log_sessions",
+                    "--package=vrcx-0-core"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'property_activity_buckets'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=property_activity_buckets",
+                    "--package=vrcx-0-core"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'property_activity_sessions'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=property_activity_sessions",
+                    "--package=vrcx-0-core"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'property_friend_names'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=property_friend_names",
+                    "--package=vrcx-0-core"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'social_circles'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=social_circles",
+                    "--package=vrcx-0-core"
+                ]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_runtime_event'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-runtime-event"]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_application_realtime'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-application-realtime"]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_i18n'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-i18n"]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_application_activity'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-application-activity"]
+            }
+        },
+        {
+            "name": "Debug integration test 'router'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=router",
+                    "--package=vrcx-0-application-activity"
+                ]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_application_game'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-application-game"]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_assistant'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-assistant"]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_mcp'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-mcp"]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_local_server'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-local-server"]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_outbound_adapters'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-outbound-adapters"]
+            }
+        },
+        {
+            "name": "Debug integration test 'activity_page'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=activity_page",
+                    "--package=vrcx-0-outbound-adapters"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'auth_credentials_headless'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=auth_credentials_headless",
+                    "--package=vrcx-0-outbound-adapters"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'auth_credentials_secrets'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=auth_credentials_secrets",
+                    "--package=vrcx-0-outbound-adapters"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'avatar_cache_owner'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=avatar_cache_owner",
+                    "--package=vrcx-0-outbound-adapters"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'share_collection'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=share_collection",
+                    "--package=vrcx-0-outbound-adapters"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'world_cache_owner'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=world_cache_owner",
+                    "--package=vrcx-0-outbound-adapters"
+                ]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_integrations'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-integrations"]
+            }
+        },
+        {
+            "name": "Debug integration test 'telemetry_contract'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=telemetry_contract",
+                    "--package=vrcx-0-integrations"
+                ]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_media'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-media"]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_persistence'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-persistence"]
+            }
+        },
+        {
+            "name": "Debug integration test 'activity_self_sessions'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=activity_self_sessions",
+                    "--package=vrcx-0-persistence"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'activity_view'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=activity_view",
+                    "--package=vrcx-0-persistence"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'cookies_headless'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=cookies_headless",
+                    "--package=vrcx-0-persistence"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'favorites_move'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=favorites_move",
+                    "--package=vrcx-0-persistence"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'secrets_at_rest'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=secrets_at_rest",
+                    "--package=vrcx-0-persistence"
+                ]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_platform'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-platform"]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_vrchat_client'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-vrchat-client"]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_composition'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-composition"]
+            }
+        },
+        {
+            "name": "Debug integration test 'headless_notification_webhook'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=headless_notification_webhook",
+                    "--package=vrcx-0-composition"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'telemetry_accumulator'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=telemetry_accumulator",
+                    "--package=vrcx-0-composition"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'webhook_delivery'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=webhook_delivery",
+                    "--package=vrcx-0-composition"
+                ]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_host_desktop'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-host-desktop"]
+            }
+        },
+        {
+            "name": "Debug integration test 'system_fonts'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=system_fonts",
+                    "--package=vrcx-0-host-desktop"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'vr_overlay_actor'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=vr_overlay_actor",
+                    "--package=vrcx-0-host-desktop"
+                ]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_vr_overlay'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-vr-overlay"]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_integration_api'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-integration-api"]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_runtime_host_desktop'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-runtime-host-desktop"]
+            }
+        },
+        {
+            "name": "Debug integration test 'notification_dispatcher'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=notification_dispatcher",
+                    "--package=vrcx-0-runtime-host-desktop"
+                ]
+            }
+        },
+        {
+            "name": "Debug unit tests in library 'vrcx_0_overlay_runtime'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": ["test", "--package=vrcx-0-overlay-runtime"]
+            }
+        },
+        {
+            "name": "Debug integration test 'vr_overlay_manager'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=vr_overlay_manager",
+                    "--package=vrcx-0-overlay-runtime"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'vr_overlay_runtime'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=vr_overlay_runtime",
+                    "--package=vrcx-0-overlay-runtime"
+                ]
+            }
+        },
+        {
+            "name": "Debug integration test 'vr_overlay_wrist_builder'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--test=vr_overlay_wrist_builder",
+                    "--package=vrcx-0-overlay-runtime"
+                ]
+            }
+        },
+        {
+            "name": "Debug executable 'vrcx-0-headless'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "run",
+                    "--bin=vrcx-0-headless",
+                    "--package=vrcx-0-headless"
+                ]
+            },
+            "args": []
+        },
+        {
+            "name": "Debug unit tests in executable 'vrcx-0-headless'",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--bin=vrcx-0-headless",
+                    "--package=vrcx-0-headless"
+                ]
+            }
+        }
+    ]
+}
