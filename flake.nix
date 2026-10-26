@@ -77,7 +77,6 @@
                 pkg-config
                 rustPlatform.bindgenHook
                 cmake
-                wrapGAppsHook4
               ]
               ++ lib.optionals stdenv.hostPlatform.isLinux [ wrapGAppsHook4 ];
 
@@ -88,6 +87,7 @@
                 openssl
                 webkitgtk_4_1
                 libayatana-appindicator
+                openxr-loader
               ]
             );
 
@@ -115,7 +115,12 @@
 
             preFixup = ''
               gappsWrapperArgs+=(
-                --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ pkgs.libayatana-appindicator ]}"
+                --prefix LD_LIBRARY_PATH : "${
+                  lib.makeLibraryPath [
+                    pkgs.libayatana-appindicator
+                    pkgs.openxr-loader
+                  ]
+                }"
               )
             '';
 
