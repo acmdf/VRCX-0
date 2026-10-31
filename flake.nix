@@ -60,7 +60,7 @@
             npmDeps = pkgs.fetchNpmDeps {
               name = "${finalAttrs.pname}-${finalAttrs.version}-npm-deps";
               inherit (finalAttrs) src;
-              hash = "sha256-KjfILd3NdqEaHdb4pi0bi+qN7NPXBLlAJip3lvInv+U=";
+              hash = "sha256-8H4H6U86cbJQwsZk1vYJ14ODNh3bnFcxGLv5cEeNkjI=";
             };
 
             nativeBuildInputs =
