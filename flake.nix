@@ -14,11 +14,10 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      rust-overlay,
-      ...
+    { self
+    , nixpkgs
+    , rust-overlay
+    , ...
     }:
     let
       inherit (nixpkgs) lib;
@@ -39,118 +38,125 @@
       rust-version = "1.98.0";
     in
     {
-      packages = lib.mapAttrs (system: pkgs: {
-        vrcx-0 =
-          let
-            rust = pkgs.rust-bin.stable.${rust-version}.default;
+      packages = lib.mapAttrs
+        (system: pkgs: {
+          vrcx-0 =
+            let
+              rust = pkgs.rust-bin.stable.${rust-version}.default;
 
-            rustPlatform = pkgs.makeRustPlatform {
-              cargo = rust;
-              rustc = rust;
-            };
-          in
-          rustPlatform.buildRustPackage (finalAttrs: {
-            pname = "vrcx-0";
+              rustPlatform = pkgs.makeRustPlatform {
+                cargo = rust;
+                rustc = rust;
+              };
+            in
+            rustPlatform.buildRustPackage (finalAttrs: {
+              pname = "vrcx-0";
 
-            src = pkgs.nix-gitignore.gitignoreSource [ ] ./.;
-            inherit (srcCargoToml.package) version;
+              src = pkgs.nix-gitignore.gitignoreSource [ ] ./.;
+              inherit (srcCargoToml.package) version;
 
-            cargoLock.lockFile = ./Cargo.lock;
+              cargoLock.lockFile = ./Cargo.lock;
 
-            npmDeps = pkgs.fetchNpmDeps {
-              name = "${finalAttrs.pname}-${finalAttrs.version}-npm-deps";
-              inherit (finalAttrs) src;
-              hash = "sha256-rrvxPatvecuB+SOMQimZsAA+KBpFO13PN2N3ZxmdK/I=";
-            };
+              npmDeps = pkgs.fetchNpmDeps {
+                name = "${finalAttrs.pname}-${finalAttrs.version}-npm-deps";
+                inherit (finalAttrs) src;
+                hash = "sha256-rrvxPatvecuB+SOMQimZsAA+KBpFO13PN2N3ZxmdK/I=";
+              };
 
-            nativeBuildInputs =
-              with pkgs;
-              [
-                # Pull in our main hook
-                cargo-tauri.hook
+              nativeBuildInputs =
+                with pkgs;
+                [
+                  # Pull in our main hook
+                  cargo-tauri.hook
 
-                # Setup npm
-                nodejs
-                npmHooks.npmConfigHook
+                  # Setup npm
+                  nodejs
+                  npmHooks.npmConfigHook
 
-                # Make sure we can find our libraries
-                pkg-config
-                rustPlatform.bindgenHook
-                cmake
-              ]
-              ++ lib.optionals stdenv.hostPlatform.isLinux [ wrapGAppsHook4 ];
+                  # Make sure we can find our libraries
+                  pkg-config
+                  rustPlatform.bindgenHook
+                  cmake
+                ]
+                ++ lib.optionals stdenv.hostPlatform.isLinux [ wrapGAppsHook4 ];
 
-            buildInputs = lib.optionals pkgs.stdenv.hostPlatform.isLinux (
-              with pkgs;
-              [
-                glib-networking
-                openssl
-                webkitgtk_4_1
-                libayatana-appindicator
-                openxr-loader
-              ]
-            );
+              buildInputs = with pkgs; [
+                aws-lc
+                sqlite
+              ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux (
+                with pkgs;
+                [
+                  glib-networking
+                  openssl
+                  webkitgtk_4_1
+                  libayatana-appindicator
+                  openxr-loader
+                ]
+              );
 
-            postPatch = ''
-              node <<'NODE'
-                const fs = require('node:fs');
+              postPatch = ''
+                node <<'NODE'
+                  const fs = require('node:fs');
 
-                const tauriConfigPath = 'src-tauri/tauri.conf.json';
-                const linuxConfigPath = 'src-tauri/tauri.linux.conf.json';
+                  const tauriConfigPath = 'src-tauri/tauri.conf.json';
+                  const linuxConfigPath = 'src-tauri/tauri.linux.conf.json';
 
-                const tauriConfig = JSON.parse(fs.readFileSync(tauriConfigPath, 'utf8'));
-                let config = structuredClone(tauriConfig);
+                  const tauriConfig = JSON.parse(fs.readFileSync(tauriConfigPath, 'utf8'));
+                  let config = structuredClone(tauriConfig);
 
-                const linuxConfig = JSON.parse(fs.readFileSync(linuxConfigPath, 'utf8'));
-                config = {
-                    bundle: {
-                        ...(linuxConfig.bundle ?? {}),
-                        targets: ['appimage'],
-                        createUpdaterArtifacts: false
-                    }
-                };
+                  const linuxConfig = JSON.parse(fs.readFileSync(linuxConfigPath, 'utf8'));
+                  config = {
+                      bundle: {
+                          ...(linuxConfig.bundle ?? {}),
+                          targets: ['appimage'],
+                          createUpdaterArtifacts: false
+                      }
+                  };
 
-                fs.writeFileSync(linuxConfigPath, JSON.stringify(config, null, 4));
-            '';
+                  fs.writeFileSync(linuxConfigPath, JSON.stringify(config, null, 4));
+              '';
 
-            preFixup = ''
-              gappsWrapperArgs+=(
-                --prefix LD_LIBRARY_PATH : "${
-                  lib.makeLibraryPath [
-                    pkgs.libayatana-appindicator
-                    pkgs.openxr-loader
-                  ]
-                }"
-              )
-            '';
+              preFixup = ''
+                gappsWrapperArgs+=(
+                  --prefix LD_LIBRARY_PATH : "${
+                    lib.makeLibraryPath [
+                      pkgs.libayatana-appindicator
+                      pkgs.openxr-loader
+                    ]
+                  }"
+                )
+              '';
 
-            # Set our Tauri source directory
-            cargoRoot = "";
-            # And make sure we build there too
-            buildAndTestSubdir = "src-tauri";
+              # Set our Tauri source directory
+              cargoRoot = "";
+              # And make sure we build there too
+              buildAndTestSubdir = "src-tauri";
 
-            doCheck = false;
+              doCheck = false;
 
-            passthru.updateScript = pkgs.nix-update-script { };
+              passthru.updateScript = pkgs.nix-update-script { };
 
-            meta = {
-              description = "The fast, lightweight VRCX built with Tauri and Rust.";
-              license = lib.licenses.gpl3;
-              platforms = lib.platforms.linux;
-              mainProgram = "vrcx-0";
-            };
-          });
+              meta = {
+                description = "The fast, lightweight VRCX built with Tauri and Rust.";
+                license = lib.licenses.gpl3;
+                platforms = lib.platforms.linux;
+                mainProgram = "vrcx-0";
+              };
+            });
 
-        default = self.packages.${system}.vrcx-0;
-      }) pkgsFor;
+          default = self.packages.${system}.vrcx-0;
+        })
+        pkgsFor;
 
-      devShells = lib.mapAttrs (system: pkgs: {
-        default = pkgs.mkShell {
-          inputsFrom = [ self.packages.${system}.vrcx-0 ];
+      devShells = lib.mapAttrs
+        (system: pkgs: {
+          default = pkgs.mkShell {
+            inputsFrom = [ self.packages.${system}.vrcx-0 ];
 
-          packages = [ pkgs.rust-bin.stable.${rust-version}.default ];
-        };
-      }) pkgsFor;
+            packages = [ pkgs.rust-bin.stable.${rust-version}.default ];
+          };
+        })
+        pkgsFor;
 
       overlays.default = final: prev: { inherit (self.packages.${prev.system}) vrcx-0; };
     };
